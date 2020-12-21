@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelDirectorio = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.labelError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -89,11 +90,21 @@
             this.labelDirectorio.TabIndex = 4;
             this.labelDirectorio.Text = "Directorio de Trabajo";
             // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(215, 259);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(0, 13);
+            this.labelError.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 333);
+            this.Controls.Add(this.labelError);
             this.Controls.Add(this.labelDirectorio);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSiguiente);
@@ -118,6 +129,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelDirectorio;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label labelError;
     }
 }
 

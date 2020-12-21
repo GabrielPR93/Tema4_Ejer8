@@ -54,28 +54,39 @@ namespace Tema4_Ejer8
                             }
                         }
                     }
-
-                    f.pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
-                    Text = "Visor de Imagenes" + "-<" + openFileDialog.SafeFileName + ">";
-
-                    //Información del archivo seleccionado
-                    FileInfo info = new FileInfo(openFileDialog.FileName);
-                    labelDirectorio.Text = info.DirectoryName;
-                    long tamaño = info.Length;
-
-                    while (tamaño >= 1024)
+                    try
                     {
-                        cont++;
-                        tamaño /= 1024;
+
+                        f.pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+                        Text = "Visor de Imagenes" + "-<" + openFileDialog.SafeFileName + ">";
+
+                        //Información del archivo seleccionado
+                        FileInfo info = new FileInfo(openFileDialog.FileName);
+                        labelDirectorio.Text = info.DirectoryName;
+                        long tamaño = info.Length;
+
+                        while (tamaño >= 1024)
+                        {
+                            cont++;
+                            tamaño /= 1024;
+                        }
+                        string tamañoFinal = String.Format("{0} {1}", tamaño, medida[cont]);
+                        Image img = Image.FromFile(openFileDialog.FileName);
+
+                        label1.Text = info.Name + "\n" + tamañoFinal + "\n" + img.Width + " x " + img.Height;
+
+
+                        f.Show();
+                        button1.Enabled = false;
+                        labelError.Text = "";
                     }
-                    string tamañoFinal = String.Format("{0} {1}", tamaño, medida[cont]);
-                    Image img = Image.FromFile(openFileDialog.FileName);
+                    catch (Exception)
+                    {
 
-                    label1.Text = info.Name + "\n" + tamañoFinal + "\n" + img.Width + " x " + img.Height;
+                        labelError.Text = "Error al seleccionar imagen";
+                        arrayList.Clear();
 
-
-                    f.Show();
-
+                    }
                 }
             }
         }
@@ -100,6 +111,7 @@ namespace Tema4_Ejer8
             {
                 cont = arrayList.Count - 1;
             }
+
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
@@ -118,6 +130,8 @@ namespace Tema4_Ejer8
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+
+
             if (e.KeyCode == Keys.D)
             {
                 cont++;
@@ -145,5 +159,7 @@ namespace Tema4_Ejer8
                 }
             }
         }
+
     }
 }
+
