@@ -122,14 +122,13 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelDirectorio;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label labelError;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label labelError;
     }
 }
 

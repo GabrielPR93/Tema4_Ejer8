@@ -15,19 +15,21 @@ namespace Tema4_Ejer8
     public partial class Form1 : Form
     {
         OpenFileDialog openFileDialog;
-        Form2 f = new Form2();
+        internal Form2 f = null;
         FileInfo[] imagenes;
-        ArrayList arrayList = new ArrayList();
-        int cont = 0;
+        public ArrayList arrayList = new ArrayList();
+        public int cont = 0;
         public Form1()
         {
             InitializeComponent();
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            f = new Form2(this);
             string[] medida = { "B", "KB", "MB" };
-
             int cont = 0;
 
             using (openFileDialog = new OpenFileDialog())
@@ -99,42 +101,12 @@ namespace Tema4_Ejer8
             }
         }
 
-        private void btnSiguiente_Click(object sender, EventArgs e)
+        public void btnSiguiente_Click(object sender, EventArgs e)
         {
             cont++;
-
-            if (cont < arrayList.Count)
+            try
             {
-                f.pictureBox1.Image = Image.FromFile(arrayList[cont].ToString());
-            }
-            if (cont >= arrayList.Count - 1)
-            {
-                cont = arrayList.Count - 1;
-            }
-
-        }
-
-        private void btnAnterior_Click(object sender, EventArgs e)
-        {
-            cont--;
-
-            if (cont >= 0)
-            {
-                f.pictureBox1.Image = Image.FromFile(arrayList[cont].ToString());
-            }
-            if (cont < 0)
-            {
-                cont = 0;
-            }
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-
-
-            if (e.KeyCode == Keys.D)
-            {
-                cont++;
+                labelError.Text = "";
 
                 if (cont < arrayList.Count)
                 {
@@ -145,9 +117,20 @@ namespace Tema4_Ejer8
                     cont = arrayList.Count - 1;
                 }
             }
-            else if (e.KeyCode == Keys.A)
+            catch (Exception)
             {
-                cont--;
+                labelError.Text = "Imagen corrupta";
+
+            }
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            cont--;
+            try
+            {
+
+                labelError.Text = "";
 
                 if (cont >= 0)
                 {
@@ -158,6 +141,58 @@ namespace Tema4_Ejer8
                     cont = 0;
                 }
             }
+            catch (Exception)
+            {
+
+                labelError.Text = "Imagen corrupta";
+
+            }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            try
+            {
+                labelError.Text = "";
+
+                if (e.KeyCode == Keys.D)
+                {
+                    cont++;
+
+                    if (cont < arrayList.Count)
+                    {
+                        f.pictureBox1.Image = Image.FromFile(arrayList[cont].ToString());
+                    }
+                    if (cont >= arrayList.Count - 1)
+                    {
+                        cont = arrayList.Count - 1;
+                    }
+                }
+                else if (e.KeyCode == Keys.A)
+                {
+                    cont--;
+
+                    if (cont >= 0)
+                    {
+                        f.pictureBox1.Image = Image.FromFile(arrayList[cont].ToString());
+                    }
+                    if (cont < 0)
+                    {
+                        cont = 0;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                labelError.Text = "Imagen corrupta";
+            }
+        }
+
+        public void menuContext(object sender, EventArgs e)
+        {
+            //Arreglar menu 
         }
 
     }

@@ -57,25 +57,28 @@
             this.anteriorToolStripMenuItem,
             this.cerrarImagenToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 70);
             // 
             // siguienteToolStripMenuItem
             // 
             this.siguienteToolStripMenuItem.Name = "siguienteToolStripMenuItem";
-            this.siguienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.siguienteToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.siguienteToolStripMenuItem.Text = "Siguiente";
+            this.siguienteToolStripMenuItem.Click += new System.EventHandler(this.siguienteToolStripMenuItem_Click);
             // 
             // anteriorToolStripMenuItem
             // 
             this.anteriorToolStripMenuItem.Name = "anteriorToolStripMenuItem";
-            this.anteriorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.anteriorToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.anteriorToolStripMenuItem.Text = "Anterior";
+            this.anteriorToolStripMenuItem.Click += new System.EventHandler(this.anteriorToolStripMenuItem_Click);
             // 
             // cerrarImagenToolStripMenuItem
             // 
             this.cerrarImagenToolStripMenuItem.Name = "cerrarImagenToolStripMenuItem";
-            this.cerrarImagenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarImagenToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.cerrarImagenToolStripMenuItem.Text = "Cerrar Imagen";
+            this.cerrarImagenToolStripMenuItem.Click += new System.EventHandler(this.cerrar);
             // 
             // Form2
             // 
